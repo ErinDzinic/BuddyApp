@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "881634299643",
+    "project_id": "buddyapp-9e36b",
+    "storage_bucket": "buddyapp-9e36b.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:881634299643:android:a2c51ee69ed9260357ea5e",
+        "android_client_info": {
+          "package_name": "expo.core"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "881634299643-d6riao3bd0504hekadkgolktk6u6r9ch.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "expo.core",
+            "certificate_hash": "defbb15c2e2688696f6340ee402b55653c593071"
+          }
+        },
+        {
+          "client_id": "881634299643-d8ebptm21h3bjtrqd6k00gvkthivpeh4.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCwxWJTihWGqELUcnDtZ1I_yauQ94yZ5mg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "881634299643-d8ebptm21h3bjtrqd6k00gvkthivpeh4.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
