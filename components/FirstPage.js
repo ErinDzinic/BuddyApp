@@ -1,8 +1,10 @@
 import { StyleSheet, Text, View, TextInput, Image, Alert,Button, KeyboardAvoidingView} from 'react-native';
-import { NavigationContainer } from '@react-navigation/native';
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import { AsyncStorage } from 'react-native';
+import React, { useState } from 'react';
 
 export default function FirstPage({navigation}){
+      const [name,setName] = useState('');
+      const [surname,setSurname] = useState('');
 
     return(
         <>
@@ -24,13 +26,20 @@ export default function FirstPage({navigation}){
                 style={styles.inputField}
                 placeholder='e.g. Erin'
                 underlineColorAndroid="transparent"
+                returnKeyLabel = {"next"}
+                value={name}
+                onChangeText={text => setName(text)}
                 />
             <Text style={styles.text2}>Surname</Text>
             
             <TextInput
                 style={styles.inputField}
                 placeholder='e.g. Dzinic'
-                underlineColorAndroid="transparent" />
+                underlineColorAndroid="transparent" 
+                value={surname}
+                onChangeText={text => setSurname(text)}
+                />
+                
                 <Image source={require('../pictures/circle.png')}
                 style={styles.slika2}
                 />
@@ -47,7 +56,7 @@ export default function FirstPage({navigation}){
         <View style={styles.btn}>
         <Button
                 title='Next'
-                onPress={()=> navigation.navigate('Location')}
+                onPress={()=> {navigation.navigate('Location',{ime:name,prezime:surname})}}
                 color = 'white'
                 />
         </View>       

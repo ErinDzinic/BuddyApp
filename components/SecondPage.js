@@ -2,9 +2,12 @@ import React, { useState, useEffect } from 'react';
 import { Platform, Text, View, StyleSheet, Image, TouchableOpacity, Button } from 'react-native';
 import * as Location from 'expo-location';
 
-export default function SecondPage({navigation}) {
+export default function SecondPage({navigation,route}) {
+
   const [location, setLocation] = useState(null);
   const [errorMsg, setErrorMsg] = useState(null);
+
+  const { ime,prezime } = route.params;
 
   let text = 'Waiting..';
   if (errorMsg) {
@@ -35,8 +38,9 @@ export default function SecondPage({navigation}) {
                 />         
       </View>
       <View style={styles.txtView} >
+        <Text style={styles.txt}>Welcome {ime}{prezime}</Text>
         <Text style={styles.txt}>Tell us where you live</Text>
-        <Text style={{fontFamily:'Roboto'}}>We need your location for better experience </Text>
+        <Text>We need your location for better experience </Text>
         <View style={styles.btn}>
         <Button
                 title='Next'

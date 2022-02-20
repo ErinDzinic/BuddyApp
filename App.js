@@ -5,6 +5,7 @@ import { StyleSheet, Text, View,Button,Image } from 'react-native';
 import FirstPage from './components/FirstPage';
 import SecondPage from './components/SecondPage';
 import ThirdPage from './components/ThirdPage';
+import LoggedInPage from './components/LoggedInPage';
 
 const Stack = createNativeStackNavigator();
 
@@ -18,6 +19,7 @@ export default function App() {
         <Stack.Screen name="Welcome" component={FirstPage}/>
         <Stack.Screen name="Location" component={SecondPage}/>
         <Stack.Screen name="Login" component={ThirdPage}/>
+        <Stack.Screen name="LogOut" component={LoggedInPage}/>
       </Stack.Navigator>
   </NavigationContainer>
   );

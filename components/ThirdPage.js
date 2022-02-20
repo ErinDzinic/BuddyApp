@@ -14,7 +14,7 @@ const ThirdPage = () => {
   useEffect(() =>{
     const unsubscribe = auth.onAuthStateChanged(user =>{
       if(user){
-        navigation.navigate("Welcome")
+        navigation.navigate("LogOut")
       }
     })
     return unsubscribe
