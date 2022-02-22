@@ -9,7 +9,15 @@
     "web": "expo start --web",
     "eject": "expo eject"
   },
+  "rnpm": {
+    "assets": [
+      "./assets/fonts"
+    ]
+  },
   "dependencies": {
+    "@react-native-async-storage/async-storage": "^1.16.1",
+    "@react-native-community/async-storage": "^1.12.1",
+    "@react-native-community/cli": "^7.0.3",
     "@react-native-community/masked-view": "^0.1.11",
     "@react-native-firebase/auth": "^14.5.0",
     "@react-native-google-signin/google-signin": "^7.1.0",
@@ -31,6 +39,7 @@
     "react-native-android-location-enabler": "^1.2.2",
     "react-native-firebase": "^5.6.0",
     "react-native-gesture-handler": "^2.2.0",
+    "react-native-icons": "^0.7.1",
     "react-native-maps": "0.29.4",
     "react-native-permissions": "^3.2.0",
     "react-native-reanimated": "^2.4.1",

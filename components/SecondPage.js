@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Platform, Text, View, StyleSheet, Image, TouchableOpacity, Button } from 'react-native';
+import { Text, View, StyleSheet, Image, TouchableOpacity,Alert} from 'react-native';
 import * as Location from 'expo-location';
 
 export default function SecondPage({navigation,route}) {
@@ -23,7 +23,6 @@ export default function SecondPage({navigation,route}) {
         setErrorMsg('Permission to access location was denied');
         return;
       }
-
       let location = await Location.getCurrentPositionAsync({});
       setLocation(location);
     })();
@@ -38,16 +37,24 @@ export default function SecondPage({navigation,route}) {
                 />         
       </View>
       <View style={styles.txtView} >
-        <Text style={styles.txt}>Welcome {ime}{prezime}</Text>
-        <Text style={styles.txt}>Tell us where you live</Text>
-        <Text>We need your location for better experience </Text>
-        <View style={styles.btn}>
-        <Button
-                title='Next'
-                onPress={()=> navigation.navigate('Login')}
-                color = 'white'
-                />
-        </View>       
+        <Text style={styles.txt1}>Hello {ime} {prezime}</Text>
+        <Text style={styles.txt2}>We need access to: </Text>
+        <Text style={styles.txt3}></Text>
+        <View style={styles.locView}>
+        <View style={styles.location}>
+        <Image source={require('../pictures/location.png')}
+                style={styles.locationImg}
+                /> 
+                
+        </View>
+        <View style={styles.locationView}>
+        <Text style={styles.locationTxt1}> Location!</Text>
+        <Text style={styles.locationTxt2}> To display fun stuff about user's location</Text>
+        </View>
+        </View>
+        <TouchableOpacity style={styles.btn} onPress={()=> navigation.replace('Login')}>
+          <Text style={styles.btnText}>Next</Text>
+        </TouchableOpacity>
       </View> 
     </View>
   );
@@ -59,17 +66,50 @@ export default function SecondPage({navigation,route}) {
       justifyContent: 'center',
       alignItems:'center',
       display:'flex',
-      backgroundColor: 'rgb(255,95,116)',
+      backgroundColor: '#ff3252',
     },
-    txt:{
+    txt1:{
       fontWeight: 'bold',
-      fontSize: 37,
-      fontFamily: 'notoserif'
+      fontSize: 40,
+      color: 'white',
     },
-    btn:{
-      display:'flex',
-      top: 50
+    txt2:{
+      fontWeight: '700',
+      fontSize: 30,
+      color: 'white',
+    },
+    txt3:{
+      fontWeight: '700',
+      fontSize: 20,
+      color: 'white',
+    },
+    location:{
+      height: '10%',
+      alignSelf: 'flex-start'
+    },
+    locationImg:{
+      width: 50,
+      height: 50,
+      right: 20
+    },
+    locationView:{
+      alignSelf: 'flex-end',
+      left: 55,
+      bottom: 7
       
+    },
+    locView:{
+      left: 35
+    },
+    locationTxt1:{
+      color: 'white',
+      fontWeight: 'bold',
+      fontSize: 20,
+    },
+    locationTxt2:{
+      color: 'white',
+      fontWeight: '400',
+      fontSize: 15,
     },
     img:{
       width:400,
@@ -78,18 +118,31 @@ export default function SecondPage({navigation,route}) {
       justifyContent: 'center'
     },
     imgView: {
-
       top:0,
       borderBottomLeftRadius: 200,
       borderBottomRightRadius: 200,
       position: "absolute",
     },
     txtView:{
-        width: '100%',
-        height:'100%',
-        alignItems:'center',
-        position:'absolute',
-        top: 500
-    }
+      //justifyContent: 'center',
+      alignItems: 'flex-start',
+      top: 135,
+      right: 40
+    },
+    btn:{
+      top: 40,
+      backgroundColor: '#ff3252',
+      width: 100,
+      alignItems:'center',
+      borderRadius: 10,
+      padding: 5,
+      alignSelf: 'flex-end',
+      left: 70,
+      borderWidth: 1,
+      borderColor:'white'
+    },
+    btnText:{
+      color: 'white'
+    },
     
   });

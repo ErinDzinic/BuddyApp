@@ -1,5 +1,5 @@
-import { StyleSheet, Text, View, TextInput, Image, Alert,Button, KeyboardAvoidingView} from 'react-native';
-import { AsyncStorage } from 'react-native';
+import { StyleSheet, TouchableOpacity, Text, View, TextInput, Image, KeyboardAvoidingView} from 'react-native';
+//import { AsyncStorage } from 'react-native';
 import React, { useState } from 'react';
 
 export default function FirstPage({navigation}){
@@ -7,21 +7,20 @@ export default function FirstPage({navigation}){
       const [surname,setSurname] = useState('');
 
     return(
-        <>
-        
-        <KeyboardAvoidingView style={styles.container} behavior='padding'>
-            <Image source={require('../pictures/circle.png')}
-            style={styles.slika}
-            />
-        
-        <View style={styles.zajedno}>
-            <View style={styles.container2}>
-                <Text style={styles.text}>Please</Text>
-                <Text style={styles.text}>Introduce</Text>
-                 <Text style={styles.text}>yourself</Text>
-             </View>
-        <View style={styles.NameSurname}>
-            <Text style={styles.text2}>Name</Text>
+
+        <KeyboardAvoidingView style={styles.container}>
+
+          <View style={styles.topImg}>
+            <Image source={require('../pictures/buddy.png')}
+            style={styles.slika}/>
+          </View>
+
+          <View style={styles.container2}>
+                <Text style={styles.text}>Please introduce youself</Text>
+           </View>
+
+           <View style={styles.inputView}>
+           <Text style={styles.textInput}>Name</Text>
             <TextInput
                 style={styles.inputField}
                 placeholder='e.g. Erin'
@@ -30,7 +29,7 @@ export default function FirstPage({navigation}){
                 value={name}
                 onChangeText={text => setName(text)}
                 />
-            <Text style={styles.text2}>Surname</Text>
+            <Text style={styles.textInput}>Surname</Text>
             
             <TextInput
                 style={styles.inputField}
@@ -39,29 +38,13 @@ export default function FirstPage({navigation}){
                 value={surname}
                 onChangeText={text => setSurname(text)}
                 />
-                
-                <Image source={require('../pictures/circle.png')}
-                style={styles.slika2}
-                />
-                
-        </View>
-            <View styles={styles.btn}>
-                {/* <MyBtn 
-                navigation={'Location'}
-                />  */}
-               
-                </View>
-                
-        </View>
-        <View style={styles.btn}>
-        <Button
-                title='Next'
-                onPress={()=> {navigation.navigate('Location',{ime:name,prezime:surname})}}
-                color = 'white'
-                />
-        </View>       
+           </View>
+
+        <TouchableOpacity style={styles.btn} onPress={()=> {navigation.replace('Location',{ime:name,prezime:surname})}}>
+          <Text style={styles.btnText}>Next</Text>
+        </TouchableOpacity>
         </KeyboardAvoidingView>
-        </>
+       
     );
 }
 
@@ -74,24 +57,41 @@ const styles = StyleSheet.create({
         display:'flex',
         width:'100%',
         height:'100%',
-        backgroundColor: 'rgb(255,95,116)',
+        backgroundColor: '#ff3252',
       },
       container2: {
+        width: '90%',
+        bottom: 100
+      },
+      textInput:{
+        fontWeight: 'bold',
         alignSelf: 'flex-start',
-        alignItems: 'flex-start',
-        display: 'flex',
+        paddingLeft: 20,
+        color: 'white'
+        
+    },
+      inputView:{
+        
+        width: '100%',
+        justifyContent: 'center',
+        alignItems: 'center',
         
       },
-      zajedno:{
-        bottom: 250,
-        alignItems: 'center'
+      topImg:{
+        height:'30%',
+        justifyContent: 'center',
+        alignItems:'center',
+        bottom: 100,
+      },
+      slika: {
+        top: 20
       },
 
       inputField: {
-        borderWidth: 0.5,
-        width: 250,
+        borderWidth: 0.8,
+        width:'90%',
         height: 40,
-        marginTop: 10,
+        marginBottom: 20,
         display: 'flex',
         justifyContent: 'center',
         padding: 10,
@@ -99,40 +99,17 @@ const styles = StyleSheet.create({
         borderTopWidth: 0,
         borderLeftWidth: 0,
         borderRightWidth: 0,
+        color: 'white'
     },
     text: {
-        fontSize: 40,
+        fontSize: 25,
         fontWeight: 'bold',
         color:'white',
         textTransform: 'uppercase',
-        textAlign: 'left',
-        alignSelf: 'flex-start',
-        padding: 5,
-        right: 50,
-        marginTop: 5
-      },
-      text2:{
-          marginTop: 15,
-          fontWeight: 'bold',
-          paddingTop: 5
-      },
-
-      NameSurname: {
-          width: '100%',
-          alignItems: 'flex-start',
-          top: 50,
-          margin: 10
-
-      },
-
-      slika: {
-        width: 310,
-        height: 320,
-        alignSelf: 'flex-end',
-        top: -180,
-        left: 150,
+        alignSelf: 'center',
         
       },
+
       slika2: {
             width: 250,
             height:250,
@@ -142,27 +119,19 @@ const styles = StyleSheet.create({
             right: 150
       },
       btn:{
-        position:'absolute',
-        bottom: 50,
-        
+        top: 20,
+        backgroundColor: '#ff3252',
+        width: '20%',
+        alignItems:'center',
+        borderRadius: 10,
+        padding: 5,
+        alignSelf: 'flex-end',
+        right: 20,
+        borderWidth: 1,
+        borderColor:'white'
       },
-
-      button:{
-        borderRadius:20,
-        paddingVertical: 12,
-        paddingHorizontal: 12,
-        backgroundColor: 'white',
-        width: 100,
-        alignItems: 'center',
-        position: 'absolute',
-        top: 100
-    },
-    buttonText:{
-        color:'white',
-        fontWeight:'bold',
-        textTransform: 'uppercase',
-        fontSize: 16,
-        textAlign: 'auto'
-    }
+      btnText:{
+        color: 'white'
+      },
   });
 

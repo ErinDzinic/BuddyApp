@@ -1,4 +1,4 @@
-import { KeyboardAvoidingView, StyleSheet, Text, View,TextInput, TouchableOpacity} from 'react-native'
+import { KeyboardAvoidingView,Image, StyleSheet, Text, View,TextInput, TouchableOpacity} from 'react-native'
 import React, { useEffect } from 'react'
 import { useState } from 'react';
 import { auth } from '../firebase'
@@ -14,7 +14,7 @@ const ThirdPage = () => {
   useEffect(() =>{
     const unsubscribe = auth.onAuthStateChanged(user =>{
       if(user){
-        navigation.navigate("LogOut")
+        navigation.replace("LogOut")
       }
     })
     return unsubscribe
@@ -42,6 +42,11 @@ const ThirdPage = () => {
 
   return (
     <KeyboardAvoidingView  style={styles.main}>
+
+          <View style={styles.topImg}>
+            <Image source={require('../pictures/buddy.png')}
+            style={styles.slika}/>
+          </View>
 
     <View style={styles.inputView}>
       <TextInput placeholder='E-Mail'
@@ -84,25 +89,38 @@ const styles = StyleSheet.create({
   main:{
     flex: 1,
     justifyContent: 'center',
-    alignItems: 'center'
+    alignItems: 'center',
+    backgroundColor: '#ff3252'
   },
   
 input:{
+  borderBottomWidth: 0.5,
+  paddingHorizontal: 15,
+  paddingVertical: 10,
+  marginTop: 5
+
+},
+topImg:{
+  height:'30%',
+  justifyContent: 'center',
+  alignItems:'center',
+  bottom: 0,
+},
+slika: {
   
 },
 inputView:{
   width: '80%',
-  backgroundColor: 'yellow',
+  backgroundColor: 'white',
   paddingHorizontal: 15,
   paddingVertical: 10,
   borderRadius: 10,
-  marginTop: 5
+  
 },
 buttonText:{
   color:'white',
   fontWeight: '700',
   fontSize: 16,
-
 },
 buttonView:{
   width:'60%',
@@ -111,20 +129,22 @@ buttonView:{
   marginTop: 40
 },
 button:{
-  backgroundColor: 'blue',
+  backgroundColor: '#ff3252',
   width:'100%',
   padding: 15,
   borderRadius: 10,
-  alignItems:'center'
+  alignItems:'center',
+  borderWidth: 1,
+  borderColor: 'white'
 },
 buttonOutLine:{
-  backgroundColor: 'red',
+  backgroundColor: 'white',
   marginTop: 5,
-  borderColor: 'green',
+  borderColor: 'white',
   borderWidth: 1
 },
 buttonOutLineText:{
-  color:'blue',
+  color:'#ff3252',
   fontWeight: '700',
   fontSize: 16,
 }
